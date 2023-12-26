@@ -26,7 +26,7 @@ cd Kurina
 ##### Install as Command
 Move Kurina to the binary directory.
 ```sh
-mv kurina /usr/bin/kurina
+mv main /usr/bin/kurina
 ```
 And then make it as executable
 ```sh
@@ -34,7 +34,7 @@ chmod +x /usr/bin/kurina
 ```
 or install with **update-alternatives** command
 ```sh
-sudo update-alternatives --install /usr/bin/kurina kurina $(pwd)/kurina 0
+sudo update-alternatives --install /usr/bin/kurina kurina $(pwd)/main 0
 ```
 It will make it as auto mode
 
