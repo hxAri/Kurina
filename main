@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+#
+# Kurīnā (クリーナー)
+#
+# Command line tool to clear python cache.
+#
+# @author Ari Setiawan
+# @create 26.12-2023 20:10
+# @github https://github.com/hxAri/Kurina
+#
+# Kurīnā Copyright (c) 2023 - Ari Setiawan <hxari@proton.me>
+# Kurīnā Licence under GNU General Public Licence v3
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+#
+
+# Change current working directory.
+cd $(dirname $0)
+
+# The default target is current working directory.
+target=$(pwd)
+
+# Check if has argumet passed.
+if [[ $1 != "" ]]; then
+	if [[ ! -d $1 ]]; then
+		echo -e "$1: no such file or directory"
+		exit 1
+        fi
+	target=$1
+fi
+
+# Find all pycachhe files.
+for path in $(find $target | grep __pycache__); do
+	if [[ -d $path ]]; then
+		rm -rf $path
+	fi
+done
